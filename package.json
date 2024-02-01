@@ -1,0 +1,16 @@
+{
+  "name": "@axel669/http",
+  "version": "0.1.0",
+  "description": "",
+  "main": "node.js",
+  "type": "module",
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "Axel",
+  "license": "MIT",
+  "exports": {
+    ".": "node.js",
+    "./browser": "browser.js"
+  }
+}

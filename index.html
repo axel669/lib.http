@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=5,minimum-scale=1,width=device-width">
+        <title>HTTP Testing</title>
+    </head>
+    <body ws-x="@theme:tron">
+        <script src="https://cdn.jsdelivr.net/npm/@axel669/windstorm@0.3.1/dist/browser.js"></script>
+        <script type="module">
+            import http from "./browser.js"
+
+            const echo = http.create("https://echo.axel669.net")
+            const controller = new AbortController()
+            const testArgs = {
+                url: "delay/5",
+                query: {
+                    a: 1,
+                    b: 2,
+                },
+                data: [1, 2, 3, 4],
+                signal: controller.signal
+            }
+            setTimeout(
+                () => controller.abort(),
+                2000
+            )
+            console.log(
+                await echo.post(testArgs)
+            )
+            // console.log(
+            //     await echo.put(testArgs)
+            // )
+            // console.log(
+            //     await echo.patch(testArgs)
+            // )
+            // console.log(
+            //     await echo.head(testArgs)
+            // )
+            // console.log(
+            //     await echo.delete(testArgs)
+            // )
+        </script>
+    </body>
+</html>
