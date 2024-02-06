@@ -7,26 +7,34 @@
     <body ws-x="@theme:tron">
         <script src="https://cdn.jsdelivr.net/npm/@axel669/windstorm@0.3.1/dist/browser.js"></script>
         <script type="module">
-            import http from "./browser.js"
+            import http from "../lib/browser.js"
 
             const echo = http.create("https://echo.axel669.net")
-            const controller = new AbortController()
-            const testArgs = {
-                url: "delay/5",
-                query: {
-                    a: 1,
-                    b: 2,
-                },
-                data: [1, 2, 3, 4],
-                signal: controller.signal
-            }
-            setTimeout(
-                () => controller.abort(),
-                2000
+            console.log(echo.href)
+            console.log(http.href)
+            console.log(
+                http.resolve("wat/").href
             )
             console.log(
-                await echo.post(testArgs)
+                http.resolve("/wat").href
             )
+            // const controller = new AbortController()
+            // const testArgs = {
+            //     url: "delay/5",
+            //     query: {
+            //         a: 1,
+            //         b: 2,
+            //     },
+            //     data: [1, 2, 3, 4],
+            //     signal: controller.signal
+            // }
+            // setTimeout(
+            //     () => controller.abort(),
+            //     2000
+            // )
+            // console.log(
+            //     await echo.post(testArgs)
+            // )
             // console.log(
             //     await echo.put(testArgs)
             // )

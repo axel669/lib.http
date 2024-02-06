@@ -1,8 +1,8 @@
 {
   "name": "@axel669/http",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
-  "main": "node.js",
+  "main": "lib/node.js",
   "type": "module",
   "scripts": {
   },
@@ -10,7 +10,10 @@
   "author": "Axel",
   "license": "MIT",
   "exports": {
-    ".": "node.js",
-    "./browser": "browser.js"
-  }
+    ".": "lib/node.js",
+    "./browser": "lib/browser.js"
+  },
+  "files": [
+    "lib/"
+  ]
 }
