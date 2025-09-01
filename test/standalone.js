@@ -1,7 +1,9 @@
 // @ts-check
 import http from "@axel669/http"
 
-const echo = http.origin("https://echo.axel669.net")
+const echo = http.origin({
+    origin: "https://echo.axel669.net"
+})
 
 const thing = await echo.post`/`({
     // body: new URLSearchParams({ test: "10" }),

@@ -46,7 +46,18 @@ export type RequestOptions = Expand<
 >
 
 export type OptionsBuilder =
-    (url: string, method: Method, options?: RequestOptions) => Options
+    (config: OriginConfig, init: { url: string, method: Method, options: RequestOptions }) => Options
 export type RequestBuilder =
     (raw: TemplateStringsArray, ...values: any[]) =>
         (options?: RequestOptions) => CancellableRequest
+
+export type Fetch =
+    (url: RequestInfo | URL, options?: RequestInit) => Promise<Response>
+
+export type OriginConfig = {
+    origin: string | undefined
+    options: RequestInit
+    fetch: Fetch
+}
+export type OriginRequester =
+    (config?: Partial<OriginConfig>) => { [key in Method]: RequestBuilder }
