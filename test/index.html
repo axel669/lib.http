@@ -9,7 +9,9 @@
         <script type="module">
             import http from "../lib/main.js"
 
-            const echo = http("https://echo.axel669.net")
+            const echo = http.origin({
+                origin: "https://echo.axel669.net"
+            })
 
             const get = await echo.get`/some/path/example-text`({
                 query: {
@@ -17,6 +19,9 @@
                 }
             }).promise
             console.log(await get.res.json())
+
+            const standalone = await http.req.get`/test/standalone.js`().promise
+            console.log(await standalone.res.text())
             // const controller = new AbortController()
             // const testArgs = {
             //     url: "delay/5",
