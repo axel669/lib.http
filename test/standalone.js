@@ -1,24 +1,29 @@
-// @ts-check
 import http from "@axel669/http"
 
-const echo = http.origin({
-    origin: "https://echo.axel669.net"
+const echo = http.create({
+    origin: "https://echo.axel669.net/",
+    parse: http.res.json,
 })
 
-const thing = await echo.post`/`({
+const thing = await echo.post({
+    url: "/",
     // body: new URLSearchParams({ test: "10" }),
-    json: [1, 2, 3, 4],
-    headers: {
-        "content-type": "application/json"
-    }
-}).promise
+    json: [1, 2, 3, 4]
+})
 
 console.log(thing)
-console.log(await thing.res.json())
 
-const get = await echo.get`/some/path/example-text`().promise
-console.log(await get.res.json())
+const wait = echo.get({
+    url: "/delay/5"
+})
+setTimeout(
+    () => wait.abort(),
+    1000
+)
 
-const standalone = http.req.get`https://echo.axel669.net/delay/2`()
-setTimeout(() => standalone.abort(), 500)
-console.log(await standalone.promise)
+console.log(
+    await wait
+)
+console.log(
+    await echo.head({ url: "/", parse: http.res.text })
+)
