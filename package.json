@@ -1,19 +1,26 @@
 {
   "name": "@axel669/http",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "",
   "main": "lib/main.js",
   "type": "module",
   "scripts": {
+    "server": "@axel669/http"
   },
   "keywords": [],
   "author": "Axel",
   "license": "MIT",
+  "bin": {
+    "simpl.http": "./lib/server.js"
+  },
   "exports": {
     ".": "./lib/main.js",
     "./types": "./lib/types.ts"
   },
   "files": [
     "lib/"
-  ]
+  ],
+  "dependencies": {
+    "@axel669/result": "^0.2.1"
+  }
 }
