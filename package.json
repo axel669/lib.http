@@ -1,6 +1,6 @@
 {
   "name": "@axel669/http",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "",
   "main": "lib/main.js",
   "type": "module",
@@ -10,12 +10,8 @@
   "keywords": [],
   "author": "Axel",
   "license": "MIT",
-  "bin": {
-    "simpl.http": "./lib/server.js"
-  },
   "exports": {
-    ".": "./lib/main.js",
-    "./types": "./lib/types.ts"
+    ".": "./lib/main.js"
   },
   "files": [
     "lib/"
